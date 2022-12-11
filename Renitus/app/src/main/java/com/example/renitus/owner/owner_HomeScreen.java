@@ -20,9 +20,19 @@ import com.example.renitus.databinding.ActivityOwnerHomeScreenBinding;
 import com.example.renitus.renter.renter_HomeScreen;
 import com.example.renitus.renter.renter_RV_Adapter;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Objects;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnCameraIdleListener;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
+import com.google.android.gms.maps.GoogleMap.OnMapLongClickListener;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
 
 public class owner_HomeScreen extends DrawerBaseActivity implements
         owner_listing_RV_Adapter.delete_btn_Listener, owner_listing_RV_Adapter.onViewClickListener,
@@ -103,6 +113,8 @@ public class owner_HomeScreen extends DrawerBaseActivity implements
                     item.setItem_category(cursor.getString(3));
                     item.setItem_description(cursor.getString(4));
                     item.setItem_price(String.valueOf(cursor.getInt(5)));
+                    item.setItem_lat(cursor.getDouble(6));
+                    item.setItem_long(cursor.getDouble(7));
                     Log.d("insideHomeScreen", ""+cursor.getInt(2));
                     itemList.add(item);
                 }
@@ -127,9 +139,13 @@ public class owner_HomeScreen extends DrawerBaseActivity implements
         openUpdatePlayerDialog(item_modal);
     }
     private void openUpdatePlayerDialog(item_modal item_modal) {
-        UpdateListingItemDialog updateListingItemDialog = new UpdateListingItemDialog();
-        updateListingItemDialog.setItem(item_modal);
-        updateListingItemDialog.show(getSupportFragmentManager(), "update Homework");
+        Intent intent = new Intent(owner_HomeScreen.this, Add_item.class);
+        String item_model_json = (new Gson()).toJson(item_modal);
+        intent.putExtra("item_modal", item_model_json);
+        startActivity(intent);
+//        UpdateListingItemDialog updateListingItemDialog = new UpdateListingItemDialog();
+//        updateListingItemDialog.setItem(item_modal);
+//        updateListingItemDialog.show(getSupportFragmentManager(), "update Homework");
     }
 
 }

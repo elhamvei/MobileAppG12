@@ -5,20 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:isScrollContainer="true"
     android:fillViewport="true"
-    android:scrollbarSize="40dp"
+    android:isScrollContainer="true"
     android:overScrollMode="never"
+    android:scrollbarSize="40dp"
     android:scrollbarStyle="insideOverlay"
     android:scrollbarThumbVertical="@color/LightPink"
-    tools:context=".owner.Add_item"
-    >
+    tools:context=".owner.Add_item">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="25dp"
-        >
+        android:paddingBottom="25dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -62,10 +60,9 @@
                 android:layout_width="320dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="20dp"
-                app:layout_constraintLeft_toLeftOf="@id/item_name_TIL"
-                app:layout_constraintTop_toBottomOf="@id/item_name_TIL"
                 android:hint="Category"
-                >
+                app:layout_constraintLeft_toLeftOf="@id/item_name_TIL"
+                app:layout_constraintTop_toBottomOf="@id/item_name_TIL">
 
                 <AutoCompleteTextView
                     android:id="@+id/item_category_dropdown_menu"
@@ -111,45 +108,59 @@
                 android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                app:layout_constraintLeft_toLeftOf="@id/item_price_TIL"
-                app:layout_constraintTop_toBottomOf="@id/item_price_TIL"
                 android:background="@drawable/edit_text_bg"
                 android:drawableStart="@drawable/ic_baseline_description_24"
                 android:drawablePadding="10dp"
+                android:focusable="true"
+                android:hint="Add the description"
+                android:inputType="textMultiLine"
+                android:isScrollContainer="true"
+                android:maxLines="6"
+                android:minLines="6"
                 android:paddingStart="12dp"
                 android:paddingTop="5dp"
-                android:paddingBottom="10dp"
                 android:paddingEnd="12dp"
-                android:hint="Add the description"
-                android:isScrollContainer="true"
-                android:textIsSelectable="true"
-                android:focusable="true"
-                android:minLines="6"
-                android:maxLines="6"
-                android:inputType="textMultiLine"
-                android:scrollbars="vertical"
+                android:paddingBottom="10dp"
                 android:scrollbarSize="10dp"
-                android:scrollbarThumbVertical = "@drawable/scrollbar"
+                android:scrollbarThumbVertical="@drawable/scrollbar"
+                android:scrollbars="vertical"
+                android:textIsSelectable="true"
                 android:verticalScrollbarPosition="right"
+                app:layout_constraintLeft_toLeftOf="@id/item_price_TIL"
+                app:layout_constraintTop_toBottomOf="@id/item_price_TIL"
 
                 />
+
+            <FrameLayout
+                android:layout_width="320dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="160dp"
+                app:layout_constraintStart_toStartOf="@+id/item_description"
+                app:layout_constraintTop_toTopOf="@+id/item_description">
+
+                <fragment
+                    android:id="@+id/map"
+                    class="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
 
             <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
                 android:id="@+id/upload_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/item_description"
-                app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginTop="350dp"
                 android:backgroundTint="#E7B3BA"
-                android:fontFamily="@font/poppins_semibold"
-                android:text="Upload"
-                app:icon="@drawable/ic_baseline_cloud_upload_24"
-                android:textColor="@color/Black"
                 android:elevation="10dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Save"
+                android:textColor="@color/Black"
                 app:elevation="0dp"
-                />
+                app:icon="@drawable/ic_baseline_save_24"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_description" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Created by vamsimadduluri on 07/01/22, 8:51 PM
+  ~ Copyright (c) 2022 . All rights reserved.
+  ~ Last modified 07/01/22, 8:51 PM
+  ~
+  -->
+
+<ripple android:color="#00FFFFFF"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@android:id/mask"
+        android:drawable="@color/white">
+        <corners android:radius="@dimen/fab_margin"></corners>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="@dimen/fab_margin"></corners>
+        </shape>
+    </item>
+</ripple>

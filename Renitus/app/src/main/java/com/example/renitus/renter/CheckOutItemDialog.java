@@ -24,6 +24,7 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import com.example.renitus.Entities.item_modal;
 import com.example.renitus.R;
+import com.example.renitus.helper.CartList;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -86,6 +87,7 @@ public class CheckOutItemDialog extends AppCompatDialogFragment {
                 public void onClick(View v) {
                     toast.show();
                     startActivity(new Intent(getActivity(), renter_HomeScreen.class));
+                    CartList.getInstance().clear();
                     dismiss();
 //                    item_modal new_item = new item_modal(item_name_TIED.getText().toString(), category,
 //                            item_price_TIED.getText().toString(),

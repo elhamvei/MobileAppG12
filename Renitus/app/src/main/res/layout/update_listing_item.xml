@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:isScrollContainer="true"
+    android:fillViewport="true"
+    android:scrollbarSize="40dp"
+    android:overScrollMode="never"
+    android:scrollbarStyle="insideOverlay"
+    android:scrollbarThumbVertical="@color/LightPink"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="25dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/item_name_TIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Name"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/Coral"
+                app:boxStrokeWidth="3dp"
+                app:endIconMode="clear_text"
+                app:errorContentDescription="Not a valid phone number"
+                app:errorEnabled="true"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/DarkGray"
+                app:hintTextColor="@color/purple_logo"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:startIconDrawable="@drawable/item">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/item_name_TIEDT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/item_category_dropdown"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="320dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="@id/item_name_TIL"
+                app:layout_constraintTop_toBottomOf="@id/item_name_TIL"
+                android:hint="Status"
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/item_category_dropdown_menu"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/item_price_TIL"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Price"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/Coral"
+                app:boxStrokeWidth="3dp"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="Required*"
+                app:helperTextTextColor="@color/DarkGray"
+                app:hintTextColor="@color/purple_logo"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_category_dropdown"
+                app:startIconDrawable="@drawable/ic_baseline_currency_rupee_24">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/item_price_TIEDT"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/item_description"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:layout_constraintLeft_toLeftOf="@id/item_price_TIL"
+                app:layout_constraintTop_toBottomOf="@id/item_price_TIL"
+                android:background="@drawable/edit_text_bg"
+                android:drawableStart="@drawable/ic_baseline_description_24"
+                android:drawablePadding="10dp"
+                android:paddingStart="12dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="10dp"
+                android:paddingEnd="12dp"
+                android:hint="Add the description"
+                android:isScrollContainer="true"
+                android:textIsSelectable="true"
+                android:focusable="true"
+                android:minLines="6"
+                android:maxLines="6"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"
+                android:scrollbarSize="10dp"
+                android:scrollbarThumbVertical = "@drawable/scrollbar"
+                android:verticalScrollbarPosition="right"
+
+                />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/save_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_description"
+                app:layout_constraintRight_toRightOf="parent"
+                android:backgroundTint="#E7B3BA"
+                app:icon="@drawable/ic_baseline_save_24"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Save"
+                android:textColor="@color/Black"
+                android:elevation="10dp"
+                app:elevation="0dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+
+</ScrollView>

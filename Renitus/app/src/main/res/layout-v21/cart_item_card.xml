@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
+    >
+    <RelativeLayout
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#D6F9BD"
+        >
+        <LinearLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="100">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_weight="100"
+                android:fontFamily="sans-serif"
+                android:text="Item Name"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:paddingStart="10dp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:text="Price "
+            android:textStyle="italic"
+            android:textSize="25sp"
+            android:fontFamily="sans-serif"
+            android:textAlignment="center"
+            android:textColor="@color/Black"
+
+            />
+
+        <RelativeLayout
+            android:id="@+id/quantity_RL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/delete_btn"
+            android:layout_below="@id/item_price"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="10dp">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/increment_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/ic_baseline_add_circle_24"
+                android:backgroundTint="@color/Green"
+                />
+
+            <EditText
+                android:id="@+id/quantity_EDT"
+                android:layout_width="35dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toRightOf="@id/increment_btn"
+                android:hint="0"
+                android:text="0"
+                android:textStyle="bold|normal"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textColorHint="@color/RosyBrown"
+                android:textSize="20sp"
+                android:inputType="number"
+                />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/decrement_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_baseline_do_disturb_on_24"
+                android:backgroundTint="@color/Red"
+                android:layout_toRightOf="@id/quantity_EDT"
+                />
+
+        </RelativeLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_price"
+            android:backgroundTint="@color/OrangeRed"
+            app:icon="@drawable/ic_baseline_delete_24"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+

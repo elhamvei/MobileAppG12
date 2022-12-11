@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.renitus.Entities.cart_modal;
 import com.example.renitus.Entities.item_modal;
 import com.example.renitus.R;
+import com.example.renitus.helper.CartList;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.util.ArrayList;
@@ -27,18 +28,16 @@ import java.util.Collection;
 
 public class cart_RV_Adapter extends RecyclerView.Adapter<cart_RV_Adapter.ViewHolder> implements Filterable {
 
-    private ArrayList<item_modal> cart_list;
     private ArrayList<item_modal> full_cart_list;
     private final Context mContext;
     private onDeleteToCartListener deleteListener;
     private onQuantityChangeListener quantityChangeListener;
 
-    public cart_RV_Adapter(Context context, ArrayList<item_modal> itemList) {
+    public cart_RV_Adapter(Context context) {
         this.mContext = context;
-        this.cart_list = itemList;
         this.deleteListener = (onDeleteToCartListener) mContext;
         this.quantityChangeListener = (onQuantityChangeListener) mContext;
-        this.full_cart_list = new ArrayList<>(cart_list);
+        this.full_cart_list = new ArrayList<>(CartList.getInstance());
     }
 
     @NonNull
@@ -50,7 +49,7 @@ public class cart_RV_Adapter extends RecyclerView.Adapter<cart_RV_Adapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull cart_RV_Adapter.ViewHolder holder, int position) {
-        item_modal item = cart_list.get(position);
+        item_modal item = CartList.getInstance().get(position);
         Log.d("insideRV", "onBindViewHolder: " + item.getItem_category());
         holder.item_name.setText(item.getItem_name());
         holder.item_price.setText(item.getItem_price());
@@ -59,7 +58,7 @@ public class cart_RV_Adapter extends RecyclerView.Adapter<cart_RV_Adapter.ViewHo
         holder.delete_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cart_list.remove(holder.getAdapterPosition());
+                CartList.getInstance().remove(holder.getAdapterPosition());
                 full_cart_list.remove(holder.getAdapterPosition());
                 deleteListener.onDeleteButtonClicked(item);
                 notifyDataSetChanged();
@@ -99,7 +98,7 @@ public class cart_RV_Adapter extends RecyclerView.Adapter<cart_RV_Adapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return cart_list.size();
+        return CartList.getInstance().size();
     }
 
     @Override
@@ -130,8 +129,8 @@ public class cart_RV_Adapter extends RecyclerView.Adapter<cart_RV_Adapter.ViewHo
         @SuppressLint("NotifyDataSetChanged")
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            cart_list.clear();
-            cart_list.addAll((Collection<? extends item_modal>) filterResults.values);
+            CartList.getInstance().clear();
+            CartList.getInstance().addAll((Collection<? extends item_modal>) filterResults.values);
             notifyDataSetChanged();
         }
     };

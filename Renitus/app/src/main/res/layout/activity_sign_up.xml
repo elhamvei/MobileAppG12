@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:background="#1c3656"
+    tools:context=".SignUpActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="#FBFBFB"
+        app:cardCornerRadius="34dp"
+        app:cardElevation="5dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                android:layout_marginTop="100dp"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/email_TIL"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                app:helperText="Required*"
+                app:endIconMode="clear_text"
+                app:helperTextTextColor="@color/Red"
+                app:errorContentDescription="Not a valid Email"
+                app:startIconDrawable="@drawable/ic_baseline_email_24"
+                app:hintTextColor="#1c3656"
+                app:errorEnabled="true"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="#1c3656"
+                app:boxStrokeWidth="3dp"
+
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_TIEDT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/email_TIL"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/password_login"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                app:errorContentDescription="Not a valid Password"
+                app:startIconDrawable="@drawable/ic_baseline_lock_24"
+                app:endIconMode="password_toggle"
+                app:hintTextColor="#1c3656"
+                app:errorEnabled="true"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="#1c3656"
+                app:boxStrokeWidth="3dp"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_login_TIEDT"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textPassword"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/user_type"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="160dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="15dp"
+                android:layout_below="@id/password_login"
+                android:hint="Are you a?"
+                android:layout_marginStart="30dp"
+                >
+
+                <AutoCompleteTextView
+                    android:id="@+id/status_dropdown_menu"
+                    android:layout_width="160dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/comfortaa_bold"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/SignUp_Button"
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/user_type"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:backgroundTint="#1c3656"
+                android:fontFamily="@font/comfortaa_regular"
+                android:padding="10dp"
+                android:text="Sign Up"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.core.widget.NestedScrollView>

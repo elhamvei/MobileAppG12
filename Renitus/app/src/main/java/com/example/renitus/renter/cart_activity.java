@@ -21,6 +21,7 @@ import com.example.renitus.Entities.cart_modal;
 import com.example.renitus.Entities.item_modal;
 import com.example.renitus.R;
 import com.example.renitus.databinding.ActivityCartBinding;
+import com.example.renitus.helper.CartList;
 import com.example.renitus.owner.UpdateListingItemDialog;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -36,7 +37,6 @@ public class cart_activity extends AppCompatActivity implements cart_RV_Adapter.
 
     private ActivityCartBinding binding;
     private Toolbar toolbar;
-    private ArrayList<item_modal> cartList = new ArrayList<>();
     private Map<item_modal, Integer> finalCartList_Map = new HashMap<>();
     private RecyclerView recyclerView;
     private cart_RV_Adapter adapter;
@@ -63,17 +63,17 @@ public class cart_activity extends AppCompatActivity implements cart_RV_Adapter.
                 LinearLayoutManager.VERTICAL, false));
 
         if(getIntent().getBooleanExtra("fromHomeScreen", false)){
-            adapter = new cart_RV_Adapter(this, cartList);
+            adapter = new cart_RV_Adapter(this);
             recyclerView.setAdapter(adapter);
         }
         else{
-            cartList = getIntent().getParcelableArrayListExtra("CartListFromRenterHomeScreen");
-            Log.d("cartList Size", ""+cartList.size());
+            //CartList cartList = CartList.getInstance(); //getIntent().getParcelableArrayListExtra("CartListFromRenterHomeScreen");
+            Log.d("cartList Size", ""+CartList.getInstance().size());
 
-            adapter = new cart_RV_Adapter(this, cartList);
+            adapter = new cart_RV_Adapter(this);
             recyclerView.setAdapter(adapter);
 
-            for(item_modal item_modal:cartList){
+            for(item_modal item_modal:CartList.getInstance()){
                 finalCartList_Map.put(item_modal, 1);
             }
 
