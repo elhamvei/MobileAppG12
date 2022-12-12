@@ -79,7 +79,7 @@ public class CheckOutItemDialog extends AppCompatDialogFragment {
                 totalPrice += Integer.parseInt(items.getKey().getItem_price()) * items.getValue();
             }
 
-            total_price.setText("Total Price = ₹" + totalPrice);
+            total_price.setText("Total Price = " + totalPrice+" CAD");
             total_items.setText("Total Items = "+ totalItems);
 
             proceed_to_payment_btn.setOnClickListener(new View.OnClickListener() {

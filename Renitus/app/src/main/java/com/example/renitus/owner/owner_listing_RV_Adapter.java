@@ -54,7 +54,7 @@ public class owner_listing_RV_Adapter extends RecyclerView.Adapter<owner_listing
         item_modal item = item_list.get(position);
         Log.d("insideRV", "onBindViewHolder: " + item.getItem_name());
         holder.name.setText(item.getItem_name());
-        holder.price.setText("₹ " +item.getItem_price());
+        holder.price.setText(item.getItem_price()+" CAD");
 
         holder.view_btn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -92,7 +92,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_category_dropdown"
-                app:startIconDrawable="@drawable/ic_baseline_currency_rupee_24">
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/item_price_TIEDT"

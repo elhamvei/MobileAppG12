@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
-        android:text="Total price =  ₹3000"
+        android:text="Total price =  3000 CAD"
         android:textSize="30sp"
         android:layout_below="@id/No_of_items"
         android:textColor="@color/black"
