@@ -97,7 +97,14 @@ public class owner_HomeScreen extends DrawerBaseActivity implements
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getAllItemsInArray();
+    }
+
     private void getAllItemsInArray() {
+        itemList.clear();
         Cursor cursor = itemDb.getAllItems();
         if (cursor.getCount() == 0) {
             Toast.makeText(owner_HomeScreen.this, "No. Data", Toast.LENGTH_SHORT).show();

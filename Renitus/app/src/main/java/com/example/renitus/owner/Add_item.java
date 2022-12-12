@@ -51,6 +51,7 @@ public class Add_item extends AppCompatActivity implements GoogleMap.OnMapLongCl
     private String category = "";
     private Marker currentMarker = null;
     private LatLng lastOwnerPoint = null;
+    private int lastId = 0;
 
     private static final String SHARED_PREFS = "sharedPrefs";
     private String owner_email;
@@ -76,6 +77,7 @@ public class Add_item extends AppCompatActivity implements GoogleMap.OnMapLongCl
         String item_model_json = getIntent().getStringExtra("item_modal");
         if(item_model_json != null){
             item_modal modal = (new Gson()).fromJson(item_model_json, item_modal.class);
+            lastId = modal.getItem_id();
             item_name_TIED.setText(modal.getItem_name());
             category_dropdown.setText(modal.getItem_category());
             item_price_TIED.setText(modal.getItem_price());
@@ -102,26 +104,31 @@ public class Add_item extends AppCompatActivity implements GoogleMap.OnMapLongCl
         upload_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String cat = category;
+                if(lastId > 0)
+                    cat= category_dropdown.getText().toString();
+
                 if(currentMarker == null){
                     Toast.makeText(Add_item.this, "Select owner location in MAP", Toast.LENGTH_SHORT).show();
                 }
                 else if (TextUtils.isEmpty(item_name_TIED.getText()) || TextUtils.isEmpty(item_description.getText())
-                        || TextUtils.isEmpty(item_price_TIED.getText()) || TextUtils.isEmpty(category)) {
+                        || TextUtils.isEmpty(item_price_TIED.getText()) || TextUtils.isEmpty(cat)) {
                     Toast.makeText(Add_item.this, "fill all details", Toast.LENGTH_SHORT).show();
                 } else {
                     LatLng currentPoint = currentMarker.getPosition();
-                    item_modal item = new item_modal(item_name_TIED.getText().toString(), category,
+                    item_modal item = new item_modal(item_name_TIED.getText().toString(), cat,
                             item_price_TIED.getText().toString(),
                             item_description.getText().toString(),currentPoint.latitude,currentPoint.longitude);
 
 
                     Item_Database_Helper db = new Item_Database_Helper(Add_item.this);
-                    if(lastOwnerPoint != null) {  // Edit mode
-                        Log.d("onItemUpdate", ""+category);
+                    if(lastId > 0) {  // Edit mode
+                        Log.d("onItemUpdate", ""+cat);
+                        item.setItem_id(lastId);
                         db.updateItem(item);
                     }
                     else{
-                        Log.d("onItemAdd", ""+category);
+                        Log.d("onItemAdd", ""+cat);
                         db.insert_item(item, owner_email);
                     }
                     Intent intent = new Intent(Add_item.this, owner_HomeScreen.class);
